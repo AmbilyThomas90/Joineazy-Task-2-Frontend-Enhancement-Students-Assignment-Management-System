@@ -5,7 +5,7 @@ import * as api from '../api/mockApi';
 import Navbar from '../components/Navbar';
 import StatusBadge from '../components/StatusBadge';
 import { useToast } from '../context/ToastContext';
-
+// STUDENT ASSIGNMENTS PAGE
 export default function StudentAssignments() {
   const { courseId } = useParams();
   const { user } = useAuth();
@@ -14,15 +14,19 @@ export default function StudentAssignments() {
   const [assignments, setAssignments] = useState(null);
   const [acking, setAcking] = useState(null);
 
+  // REFRESH ASSIGNMENTS
   const refresh = useCallback(() => {
     api.getStudentAssignmentView(courseId, user.id).then(setAssignments);
   }, [courseId, user.id]);
+
+ // LOAD COURSE AND ASSIGNMENTS
 
   useEffect(() => {
     api.getCourse(courseId).then(setCourse);
     refresh();
   }, [courseId, refresh]);
-
+  
+  // HANDLE ASSIGNMENT ACKNOWLEDGEMENT
   async function handleAcknowledge(a) {
     setAcking(a.id);
     try {

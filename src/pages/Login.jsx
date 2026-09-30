@@ -3,13 +3,13 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
 export default function Login() {
-  const { login } = useAuth();
+  const { login } = useAuth(); // Get the login function from AuthContext
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [submitting, setSubmitting] = useState(false);
-
+// Handle form submission
   async function handleSubmit(e) {
     e.preventDefault();
     setError('');
@@ -29,15 +29,15 @@ export default function Login() {
   }
 
   return (
-   <div className="min-h-screen flex items-center justify-center px-6 bg-[#0B1F3A]">
-  <div className="w-full max-w-sm">
-    <div className="mb-8">
+    <div className="min-h-screen flex items-center justify-center px-6 bg-[#0B1F3A]">
+      <div className="w-full max-w-sm">
+        <div className="mb-8">
           <h1 className="font-display text-3xl text-white mb-1.5">Welcome back</h1>
           <p className="text-sm text-slate">Sign in to your coursework dashboard.</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4" noValidate>
-          <Field label="Email"  type="email" value={email} onChange={setEmail} placeholder="you@university.edu" autoComplete="email" />
+          <Field label="Email" type="email" value={email} onChange={setEmail} placeholder="you@university.edu" autoComplete="email" />
           <Field label="Password" type="password" value={password} onChange={setPassword} placeholder="••••••••" autoComplete="current-password" />
 
           {error && (
@@ -47,27 +47,25 @@ export default function Login() {
           <button
             type="submit"
             disabled={submitting}
-            className="w-full bg-ink text-paper rounded-md py-2.5 text-sm font-semibold hover:bg-ink-light transition-colors disabled:opacity-0"
+            className="w-full bg-ink text-paper rounded-md py-2.5 text-sm font-semibold hover:bg-ink-light transition-colors disabled:opacity-70"
           >
-            {submitting ? 'Signing in…' : 'Sign in'}
+            {submitting ? (
+              <span className="flex items-center justify-center gap-2">
+                {/* Loading Spinner */}
+                  <span className="w-4 h-4 border-2 border-paper rounded-full animate-ping"></span>
+                {/* Loading Text */}
+                Signing in…
+              </span>
+            ) : (
+              'Sign in'
+            )}
           </button>
         </form>
 
-       <p className="text-sm text-yellow-300 mt-6">
-  New here?{' '}
-  <Link
-    to="/register"
-    className="text-yellow-300 font-medium underline underline-offset-2"
-  >
-    Create an account
-  </Link>
-</p>
+        <p className="text-sm text-slate mt-6">
+          New here? <Link to="/register" className="text-ink font-medium underline underline-offset-2">Create an account</Link>
+        </p>
 
-        {/* <div className="mt-10 border-t border-line pt-5 text-xs text-slate space-y-1">
-          <p className="font-medium text-ink/70">Try a demo account</p>
-          <p>Professor — meera.nair@university.edu / password123</p>
-          <p>Student — ananya.rao@university.edu / password123</p>
-        </div> */}
       </div>
     </div>
   );

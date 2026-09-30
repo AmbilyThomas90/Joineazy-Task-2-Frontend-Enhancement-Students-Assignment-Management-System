@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { Field } from './Login';
-
+// Register component handles new user registration
 export default function Register() {
   const { register } = useAuth();
   const navigate = useNavigate();
@@ -14,7 +14,7 @@ export default function Register() {
   function set(key) {
     return (value) => setForm((f) => ({ ...f, [key]: value }));
   }
-
+// Handle form submission
   async function handleSubmit(e) {
     e.preventDefault();
     setError('');

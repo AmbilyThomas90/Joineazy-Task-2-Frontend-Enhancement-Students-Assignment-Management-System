@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import * as api from '../api/mockApi';
 import Navbar from '../components/Navbar';
-
+// Student Dashboard component
 export default function StudentDashboard() {
   const { user } = useAuth();
   const [courses, setCourses] = useState(null);

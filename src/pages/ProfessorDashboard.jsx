@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import * as api from '../api/mockApi';
 import Navbar from '../components/Navbar';
-
+// Professor Dashboard component
 export default function ProfessorDashboard() {
-  const { user } = useAuth();
+  const { user } = useAuth(); // Get the currently logged-in user from AuthContext
   const [courses, setCourses] = useState(null);
-
+ // Fetch the professor's courses
   useEffect(() => {
     api.getCoursesForUser(user.id, 'professor').then(setCourses);
   }, [user.id]);

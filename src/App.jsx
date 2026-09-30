@@ -17,10 +17,21 @@ export default function App() {
       <ToastProvider>
         <BrowserRouter>
           <Routes>
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/" element={<RoleRedirect />} />
+            {/* ================================
+                PUBLIC ROUTES
+                ================================= */}
 
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />  {/* Registration page */}
+            {/* 
+              
+              RoleRedirect checks the user's role and
+              redirects them to the appropriate dashboard.
+            */}
+            <Route path="/" element={<RoleRedirect />} />
+            {/* ================================
+                PROFESSOR ROUTES
+            ================================= */}
             <Route
               path="/professor"
               element={<ProtectedRoute role="professor"><ProfessorDashboard /></ProtectedRoute>}
@@ -29,7 +40,9 @@ export default function App() {
               path="/professor/courses/:courseId"
               element={<ProtectedRoute role="professor"><ProfessorAssignments /></ProtectedRoute>}
             />
-
+            {/* ================================
+                STUDENT ROUTES
+            ================================= */}
             <Route
               path="/student"
               element={<ProtectedRoute role="student"><StudentDashboard /></ProtectedRoute>}

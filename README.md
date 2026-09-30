@@ -74,8 +74,8 @@ The mock database seeds two roles so you can try both flows immediately:
 
 | Role       | Email                        | Password    |
 |------------|-------------------------------|-------------|
-| Professor  | meera.nair@university.edu     | password123 |
-| Student    | ananya.rao@university.edu     | password123 |
+| Professor  | meera.rao@university.edu   | password123 |
+| Student    | aarav.nair@university.edu     | password123 |
 | Student (no group, to see the empty-state prompt) | rohan.das@university.edu | password123 |
 
 You can also register a new account from `/register` and pick either role.

@@ -1,6 +1,6 @@
 import { Navigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-
+// RoleRedirect checks the user's authentication and role,
 export default function RoleRedirect() {
   const { user, loading } = useAuth();
   if (loading) return null;

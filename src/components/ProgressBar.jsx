@@ -1,3 +1,4 @@
+// ProgressBar component
 export default function ProgressBar({ value, total, label }) {
   const pct = total > 0 ? Math.round((value / total) * 100) : 0;
   return (

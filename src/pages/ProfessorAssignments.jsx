@@ -6,7 +6,7 @@ import ProgressBar from '../components/ProgressBar';
 import { useToast } from '../context/ToastContext';
 
 const emptyForm = { title: '', description: '', deadline: '', link: '', submissionType: 'individual' };
-
+// Professor Assignments page component.
 export default function ProfessorAssignments() {
   const { courseId } = useParams();
   const { showToast } = useToast();
@@ -27,7 +27,9 @@ export default function ProfessorAssignments() {
   function refresh() {
     api.getAssignmentsForCourse(courseId).then(setAssignments);
   }
-
+// Filter assignments based on:
+  // 1. Search text
+  // 2. Submission status
   const filtered = useMemo(() => {
     if (!assignments) return null;
     return assignments.filter((a) => {

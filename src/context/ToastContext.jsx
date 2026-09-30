@@ -1,7 +1,7 @@
 import { createContext, useCallback, useContext, useState } from 'react';
 
 const ToastContext = createContext(null);
-
+// ToastProvider wraps the application and provides toast functionality
 export function ToastProvider({ children }) {
   const [toasts, setToasts] = useState([]);
 
